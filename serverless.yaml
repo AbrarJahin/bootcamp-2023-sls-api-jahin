@@ -38,16 +38,16 @@ functions:
     handler: app.handler
     environment:
       BUCKET_NAME: ${env:bucketname}
-      events:
-        - http:
-            cors: true
-            method: get
-            path: 'uploadURL'
-            private: true
-            request:
-              parameters:
-                querystrings:
-                  filename: true
+    events:
+      - http:
+          cors: true
+          method: get
+          path: 'uploadURL'
+          private: true
+          request:
+            parameters:
+              querystrings:
+                filename: true
 
 resources:
   Resources: 
