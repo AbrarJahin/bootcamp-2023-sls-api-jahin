@@ -16,33 +16,33 @@ exports.handler = async (event) => {
   try{
     uploadURL = await s3.getSignedUrlPromise('putObject', s3Params);
     
-    return {
-      statusCode: 200,
-      body: JSON.stringify({
-        uploadURL: uploadURL,
-        filename: filename,
-        validFor: `${TTL} seconds`
-      })
-    }
+    // return {
+    //   statusCode: 200,
+    //   body: JSON.stringify({
+    //     uploadURL: uploadURL,
+    //     filename: filename,
+    //     validFor: `${TTL} seconds`
+    //   })
+    // }
   } catch(e) {
     console.log(e);
 
-    return {
-      statusCode: 400,
-      body: JSON.stringify({
-        error: "Something wrong!"
-      })
-    }
+    // return {
+    //   statusCode: 400,
+    //   body: JSON.stringify({
+    //     error: "Something wrong!"
+    //   })
+    // }
   }
 
-  // return {
-  //   statusCode: 200,
-  //   body: JSON.stringify({
-  //     uploadURL: uploadURL,
-  //     filename: filename,
-  //     validFor: `${TTL} seconds`
-  //   })
-  // }
+  return {
+    statusCode: 200,
+    body: JSON.stringify({
+      uploadURL: uploadURL,
+      filename: filename,
+      validFor: `${TTL} seconds`
+    })
+  }
 }
 
 exports.s3Handler = s3;
