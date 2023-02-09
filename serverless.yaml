@@ -30,8 +30,8 @@ provider:
         - s3:PutObject 
         - s3:PutObjectACL 
       Resource:
-        - arn:aws:s3:::${env:bucketname}/* 
-        - arn:aws:s3:::${env:bucketname} 
+        - arn:aws:s3:::${env:bucketname}/*
+        - arn:aws:s3:::${env:bucketname}
 
 functions: 
   # Add lambda function
@@ -47,21 +47,21 @@ resources:
           ServerSideEncryptionConfiguration:
             - ServerSideEncryptionByDefault:
                 SSEAlgorithm: AES256 
-        PublicAccessBlockConfiguration: 
+        PublicAccessBlockConfiguration:
           BlockPublicAcls: true
           IgnorePublicAcls: true
           BlockPublicPolicy: true
           RestrictPublicBuckets: true
-    BucketPolicy: 
+    BucketPolicy:
       Type: AWS::S3::BucketPolicy
       Properties:
         Bucket:
-          Ref: presignedURLBucket 
+          Ref: presignedURLBucket
         PolicyDocument:
           Version: "2012-10-17"
           Statement:
             - Sid: "AllowSSLRequestsOnly"
-              Effect: Deny 
+              Effect: Deny
               Principal: "*"
               Action: s3:*
               Resource: !Sub "arn:aws:s3:::${env:bucketname}"

@@ -6,7 +6,7 @@ on:
       - 'main'
       - 'feature**'
 env:
-  bucketname: jwaggon-bootcamp-2022-bucket
+  bucketname: ajahin-bootcamp-2022-bucket
 
 jobs:
   test:
@@ -34,7 +34,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-region: us-east-1
-          role-to-assume: arn:aws:iam::775564629368:role/github-actions-role-Role-JU555QQWQJ9R
+          role-to-assume: arn:aws:iam::059797357883:role/github-actions-role-Role-4Y61GPAN6M9U
           role-session-name: feature-deployment
 
       - run: npm ci
@@ -57,7 +57,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-region: us-east-1
-          role-to-assume: arn:aws:iam::775564629368:role/github-actions-role-Role-JU555QQWQJ9R
+          role-to-assume: arn:aws:iam::059797357883:role/github-actions-role-Role-4Y61GPAN6M9U
           role-session-name: dev-deployment
 
       - run: npm ci
