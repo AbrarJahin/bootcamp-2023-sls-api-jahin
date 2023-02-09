@@ -34,7 +34,20 @@ provider:
         - arn:aws:s3:::${env:bucketname}
 
 functions: 
-  # Add lambda function
+  s3UploadURL:
+    handler: app.handler
+    environment:
+      BUCKET_NAME: ${env:bucketname}
+      events:
+        - http:
+            cors: true
+            method: get
+            path: 'uploadURL'
+            private: true
+            request:
+              parameters:
+                querystrings:
+                  filename: true
 
 resources:
   Resources: 
